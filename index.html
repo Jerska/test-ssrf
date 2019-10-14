@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SSRF Reproduction code</title>
+  </head>
+  <body>
+    This is a test page to demonstrate SSRF vulnerabilities
+    <script>
+      const usp = new URLSearchParams(window.location.search);
+      const ip = usp.get('ip');
+      const port = usp.get('port');
+      if (port && ip) {
+        window.location.href = `http://${ip}:${port}/`
+      }
+    </script>
+  </body>
+</html>
